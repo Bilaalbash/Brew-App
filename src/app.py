@@ -7,7 +7,7 @@ f.clear()
 args = sys.argv
 APP_NAME = "Brew App"
 favourite = {} 
-
+#
 def start():
 
     while True:
