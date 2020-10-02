@@ -47,3 +47,17 @@ class Drink:
     def __init__(self, name, age):
         self.name = name
         self.age = age
+
+class Test_person:
+    def __init__(self, first_name, surname, age):
+        self.firstname = first_name
+        self.surname = surname
+        self.age = age
+    
+    def legality(self):
+        return self.age > 18
+
+class Test_drink:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age

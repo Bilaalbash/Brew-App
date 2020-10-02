@@ -1,6 +1,1 @@
-Coke
-Fanta
-Sprite
-Water
-Vodka
-Beer
+Nathan

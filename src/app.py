@@ -7,7 +7,7 @@ f.clear()
 args = sys.argv
 APP_NAME = "Brew App"
 favourite = {} 
-#I made this on test-branch
+
 def start():
 
     while True:
@@ -48,6 +48,6 @@ def start():
 
 if __name__ == "__main__":
     f.clear()
-    people = f.load_people("../data/people.csv")
-    beverages = f.load_drinks("../data/drink.csv")
+    people = f.load_people("./data/people.csv")
+    beverages = f.load_drinks("./data/drink.csv")
     start()
