@@ -1,6 +1,6 @@
 import sys
 import csv
-import core.functions as f
+import src.core.functions as f
 import core.class_ as a
 f.clear()
 
