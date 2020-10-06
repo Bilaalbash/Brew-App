@@ -13,6 +13,7 @@ def start():
     while True:
         f.print_menu(APP_NAME)
         people_names = [person.name for person in people]
+        print(people_names)
         drink_names = [drink.name for drink in beverages]
         user_input = f.number_selection("Please Choose an Option\n")
     
