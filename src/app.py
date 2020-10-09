@@ -16,6 +16,8 @@ favourite = {}
 drink = []
 people = []
 
+#TESTING HELLO
+
 def start():
 
     while True:
