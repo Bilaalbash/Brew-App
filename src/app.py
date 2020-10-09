@@ -1,46 +1,54 @@
 import sys
 import csv
 import src.core.functions as f
-import core.class_ as a
-f.clear()
+import src.core.class_ as a
+from src.core.adding import add_name, add_drink, assign_favourite
+from src.core.sql_ import get_from_table, save_to_database
+from src.core.printing import print_menu, table, long_table
+from src.core.saving import save_fave
+import pymysql as sql_
 
+f.clear()
+PREFERNCES_FILE = "./src/data/preferences.csv"
 args = sys.argv
 APP_NAME = "Brew App"
 favourite = {} 
+drink = []
+people = []
 
 def start():
 
     while True:
-        f.print_menu(APP_NAME)
-        people_names = [person.name for person in people]
-        print(people_names)
+        print_menu(APP_NAME)
+        names = [person.firstname for person in people]
         drink_names = [drink.name for drink in beverages]
         user_input = f.number_selection("Please Choose an Option\n")
-    
+
         if user_input == 1: # View Peoples List
-            f.table("names", people_names)
+            table("names", names)
             f.wait()
         elif user_input == 2: # View Drinks List
-            f.table("drinks", drink_names)
+            table("drinks", drink_names)
             f.wait()
         elif user_input == 3: # View Favourites List
-            f.long_table("favourite drinks list", favourite)
+            long_table("favourite drinks list", favourite)
             f.wait()
         elif user_input == 4: # Add a person
-            f.add_name(people_names, "Person", people, a.Person)
+            add_name(names, people)
+            save_to_database(people, "people")
             f.wait()
         elif user_input == 5: # Add a Drink
-            f.add_drink(drink_names, "Drink", beverages, a.Drink)
+            add_drink(drink_names, beverages)
+            save_to_database(beverages, "drink")
             f.wait()
         elif user_input == 6: # Set a Favoruite Drink
-            f.assign_favourite("Favourite Drinks List", favourite, people_names, drink_names)
+            assign_favourite("Favourite Drinks List", favourite, names, drink_names)
+            save_fave(PREFERNCES_FILE, favourite)
             f.wait()
         elif user_input == 7: #Rounds
             f.order_round(drink_names, people_names, people, beverages)
             f.wait()
         elif user_input == 8: # Close Application
-            f.save_items("people.txt", people_names, "People")
-            f.save_items("drink.txt", drink_names, "Drinks")
             print(f"\nThank you for using {APP_NAME}")
             exit()
         else:
@@ -49,6 +57,6 @@ def start():
 
 if __name__ == "__main__":
     f.clear()
-    people = f.load_people("./data/people.csv")
-    beverages = f.load_drinks("./data/drink.csv")
+    people = get_from_table("people", a.Test_person, people, "people")
+    beverages = get_from_table("drink", a.Test_drink, drink, "drink")
     start()

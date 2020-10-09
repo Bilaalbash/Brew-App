@@ -1,4 +1,4 @@
-import core.functions as f
+import src.core.functions as f
 #Start a round of drinks in menu
 people = ["Harry", "Ron", "Hermoine"]
 drinks = ["Coke", "Water", "Sprite"]

@@ -1,7 +1,7 @@
-import core.functions as f
+import src.core.functions as f
 import unittest
 from unittest.mock import Mock, patch
-from core.class_ import Person, Drink
+from src.core.class_ import Person, Drink
 
 class Test_Methods(unittest.TestCase):
 
