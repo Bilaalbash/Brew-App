@@ -1,4 +1,7 @@
 import src.core.functions as f
+from src.core.printing import table
+
+
 #Start a round of drinks in menu
 people = ["Harry", "Ron", "Hermoine"]
 drinks = ["Coke", "Water", "Sprite"]
@@ -20,7 +23,7 @@ class Round:
         for name, drink in self.orders.items():
             items.append(f"{name}: {drink}")
         
-        f.table(f"{self.owner}'s round",items)
+        table(f"{self.owner}'s round",items)
 
 class Csv():
     def __init__(self, filename):

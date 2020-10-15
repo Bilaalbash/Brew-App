@@ -17,7 +17,7 @@ def add_name(list_, object_list):
         print("Name already exists! Please try another Name")
         
 def add_drink(list_, object_list):
-    alcohol_input = input(f"Is it an alcoholic drink (y/n): ")
+    alcohol_input = input(f"Is it an alcoholic or caffeinated drink (y/n): ")
     drink_input = input(f"Drink Name: ")
    
     if alcohol_input.lower() == 'y' or alcohol_input.lower() == 'yes':
@@ -44,15 +44,15 @@ def assign_favourite(title, fav, data, data_2):
     for index, item in enumerate(data, start=1):
         temp.append(f"[{index}] {item}")
     table("people", temp) 
-    name = number_selection("\nSelect number next to the name\n")
+    name = number_selection("\nSelect number next to your name: ")
     print(name)
 
     for index, value in enumerate(data_2, start = 1):
         temp_2.append(f"[{index}] {value}")
     table("drinks", temp_2)
-    drink = number_selection("\n Select the number next to your favoruite drink: \n")
+    drink = number_selection("\n Select the number next to your preference: ")
     
     fav[data[name-1]] = data_2[drink-1]
-    print("\nFavourites Stored")
+    print("\nPreference Stored")
     
     return fav

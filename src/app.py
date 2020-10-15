@@ -5,33 +5,36 @@ import src.core.class_ as a
 from src.core.adding import add_name, add_drink, assign_favourite
 from src.core.sql_ import get_from_table, save_to_database
 from src.core.printing import print_menu, table, long_table
-from src.core.saving import save_fave
+from src.core.saving import save_fave, load_csv
+from src.core.create_round import order_round
 import pymysql as sql_
 
 f.clear()
 PREFERNCES_FILE = "./src/data/preferences.csv"
 args = sys.argv
 APP_NAME = "Brew App"
-favourite = {} 
 drink = []
 people = []
 
 def start():
 
     while True:
+        
         print_menu(APP_NAME)
         names = [person.firstname for person in people]
         drink_names = [drink.name for drink in beverages]
         user_input = f.number_selection("Please Choose an Option\n")
+        preferences = load_csv("./src/data/preferences.csv")
+
 
         if user_input == 1: # View Peoples List
-            table("names", names)
+            table("Table 20", names)
             f.wait()
         elif user_input == 2: # View Drinks List
-            table("drinks", drink_names)
+            table("Drinks Menu", drink_names)
             f.wait()
         elif user_input == 3: # View Favourites List
-            long_table("favourite drinks list", favourite)
+            long_table("    Preferences   ", preferences)
             f.wait()
         elif user_input == 4: # Add a person
             add_name(names, people)
@@ -42,11 +45,11 @@ def start():
             save_to_database(beverages, "drink")
             f.wait()
         elif user_input == 6: # Set a Favoruite Drink
-            assign_favourite("Favourite Drinks List", favourite, names, drink_names)
-            save_fave(PREFERNCES_FILE, favourite)
+            assign_favourite("Favourite Drinks List", preferences, names, drink_names)
+            save_fave(PREFERNCES_FILE, preferences)
             f.wait()
         elif user_input == 7: #Rounds
-            f.order_round(drink_names, people_names, people, beverages)
+            order_round(drink_names, names, people, beverages)
             f.wait()
         elif user_input == 8: # Close Application
             print(f"\nThank you for using {APP_NAME}")
