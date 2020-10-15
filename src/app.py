@@ -9,6 +9,9 @@ from src.core.saving import save_fave, load_csv
 from src.core.create_round import order_round
 import pymysql as sql_
 
+# KHALID WOZ ERE
+# NICE APP LIKE MATE 
+
 f.clear()
 PREFERNCES_FILE = "./src/data/preferences.csv"
 args = sys.argv
