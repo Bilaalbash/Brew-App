@@ -11,6 +11,7 @@ import pymysql as sql_
 
 # KHALID WOZ ERE
 # NICE APP LIKE MATE 
+# git request comment
 
 f.clear()
 PREFERNCES_FILE = "./src/data/preferences.csv"
